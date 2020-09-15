@@ -1,0 +1,2 @@
+# django-hikester
+sample django
