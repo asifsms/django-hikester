@@ -3,6 +3,11 @@ from .models import Item, OrderItem, Order
 
 # Register your models here.
 
-admin.site.register(Item)
+
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price')
+
+
+admin.site.register(Item, ItemAdmin)
 admin.site.register(OrderItem)
 admin.site.register(Order)
