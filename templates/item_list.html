@@ -1,9 +1,86 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h2>List</h2>
+{% load static %}
 
-{% for item in items %}
-    {{item.name}} ...... {{item.price}}
-{% endfor %}
+{% block styles %}
+    <!-- Shopping CSS-->
+        <link rel="icon" href="{% static 'product_page/img/Fevicon.png' %}" type="image/png">
+        <link rel="stylesheet" href="{% static 'product_page/vendors/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'product_page/vendors/fontawesome/css/all.min.css' %}">
+	    <link rel="stylesheet" href="{% static 'product_page/vendors/themify-icons/themify-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'product_page/vendors/nice-select/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'product_page/vendors/owl-carousel/owl.theme.default.min.css' %}">
+        <link rel="stylesheet" href="{% static 'product_page/vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'product_page/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <header class="product_masthead">
+            <div class="container d-flex h-100 align-items-center">
+                <div class="mx-auto text-center">
+                    <h1 class="mx-auto my-0 text-uppercase">Hikester</h1>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
+                    
+                </div>
+            </div>
+    </header>
+
+    <section class="section-margin mt-0">
+      <div class="owl-carousel owl-theme hero-carousel">
+        <div class="hero-carousel__slide">
+          <img src="{% static 'product_page/img/home/hero-slide1.png' %}" alt="" class="img-fluid">
+          <a href="#" class="hero-carousel__slideOverlay">
+            <h3>Wireless Headphone</h3>
+            <p>Accessories Item</p>
+          </a>
+        </div>
+        
+      </div>
+    </section>
+
+<!-- ================ trending product section start ================= -->  
+    <section class="section-margin calc-60px">
+      <div class="container">
+        <div class="section-intro pb-60px">
+          <p>Popular Item in the market</p>
+          <h2>Trending <span class="section-intro__style">Product</span></h2>
+        </div>
+        <div class="row">
+
+        {% for item in products %}
+          <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="card text-center card-product">
+              <div class="card-product__img">
+                <img class="card-img" src="{% static 'product_page/img/product/product1.png' %}" alt="">
+                <ul class="card-product__imgOverlay">
+                  <li><button><i class="ti-search"></i></button></li>
+                  <li><button><i class="ti-shopping-cart"></i></button></li>
+                  <li><button><i class="ti-heart"></i></button></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <p>{{ item.category }}</p>
+                <h4 class="card-product__title"><a href="{{ item.get_absolute_url }}">{{item.name}}</a></h4>
+                <p class="card-product__price">${{item.price}}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!-- ================ trending product section end ================= -->  
+
+{% block scripts %}
+     <!-- Shopping Script-->
+        <script src="{% static 'product_page/vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'product_page/vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'product_page/vendors/skrollr.min.js' %}"></script>
+        <script src="{% static 'product_page/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'product_page/vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'product_page/vendors/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'product_page/vendors/mail-script.js' %}"></script>
+        <script src="{% static 'product_page/js/main.js' %}"></script>
+{% endblock %}
+
 {% endblock content %}
